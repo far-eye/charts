@@ -1,2 +1,6 @@
-# charts
-A helm repository containing helm charts
+# Charts
+
+A generic chart for all the micro services.
+
+
+

@@ -9,5 +9,5 @@ entries:
     type: application
     urls:
     - https://fareye.github.io/helm-chart/helm-chart-0.1.0.tgz
-    version: 0.1.0
+    version: 0.1.1
 generated: "2020-07-07T18:46:54.46250648+05:30"

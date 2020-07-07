@@ -103,8 +103,5 @@ hpa: {}
 #  targetCpu: 50
 
 config:
-  KUBE_STORAGECLASS: "local-storage"
-  KUBE_NAMESPACE: "elasticsearch"
-  KUBE_VOLUMENAME: "elasticsearch-data"
-  KUBE_SLEEPTIME: 30
+  ENV_VARIABLE: "env-variable"
 

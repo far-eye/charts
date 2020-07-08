@@ -27,6 +27,6 @@ jobs:
           helm init --client-only
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.0.0-rc.1
+        uses: helm/chart-releaser-action@v1.0.0-alpha.2
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"

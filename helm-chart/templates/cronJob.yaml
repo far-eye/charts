@@ -1,0 +1,23 @@
+{{- if .Values.job -}}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "fullname" . }}
+spec:
+  schedule: "{{ .Values.cronJob.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            {{- range .Values.cronJob.containers }}
+            - name: "{{ $.Chart.Name }}-cron"
+              image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+              args:
+                {{- range .args }}
+                  - {{ .  }}
+                {{- end }}
+            {{- end }}
+          restartPolicy: {{ .Values.job.restartPolicy }}
+
+{{- end -}}

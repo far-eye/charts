@@ -12,6 +12,8 @@ This contains
 * ###### Ingress
 * ###### Service
 * ###### Service Account
+* ###### Job
+* ###### Cron Job
 
 
 

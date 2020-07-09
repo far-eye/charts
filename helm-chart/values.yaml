@@ -18,7 +18,7 @@ serviceAccount:
   create: true
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: service-account-name
+  name: fullname
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -101,6 +101,19 @@ hpa: {}
 #  minReplicas: 1
 #  maxReplicas: 10
 #  targetCpu: 50
+
+job: {}
+#  restartPolicy: Never
+#  containers :
+#    - command :
+#        - command1
+#        - command2
+
+cronJob: {}
+#  restartPolicy: Never
+#  schedule: "*/1 * * * *"
+#  containers :
+#    - args : ["args1","args2"]
 
 config:
   ENV_VARIABLE: "env-variable"

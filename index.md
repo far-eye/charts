@@ -11,6 +11,8 @@
 * Ingress
 * Service
 * Service Account
+* Jobs
+* Cron Jobs
 
 <br>
 
@@ -19,7 +21,7 @@
 ###### Add FarEye repository to Helm repos:
 
 ```bash
-helm repo add fareye-helm https://far-eye.github.io/charts
+helm repo add fareye-microservices-charts https://far-eye.github.io/charts
 ```
 
 Copy The `values.yaml` from [here](https://github.com/far-eye/charts/blob/master/helm-chart/values.yaml)
@@ -27,5 +29,5 @@ Copy The `values.yaml` from [here](https://github.com/far-eye/charts/blob/master
 Install the helm chart
 
 ```bash
-helm install <deployment> -n=<Namespace> fareye-helm/helm-chart -f values.yaml
+helm install <deployment> -n=<Namespace> fareye-microservices-charts/helm-chart -f values.yaml
 ```

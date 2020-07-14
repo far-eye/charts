@@ -1,5 +1,5 @@
 apiVersion: v2
-name: microservices-chart
+name: fareye-microservices-chart
 description: A Generic Helm Chart For FarEye Microservices
 
 # A chart can be either an 'application' or a 'library' chart.

@@ -11,14 +11,14 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: fullname
+fullnameOverride: ""
 
-serviceAccount:
+serviceAccount: {}
   # Specifies whether a service account should be created
-  create: true
+  # create: true
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: fullname
+  # name: fullname
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -31,23 +31,23 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service:
-  type: ClusterIP
-  port: 8080
-  targetPort: test
+service: {}
+  # type: ClusterIP
+  # port: 8080
+  # targetPort: test
 
 ingress:
   enabled: false
-  annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-      kubernetes.io/ingress.class: nginx-office
-      kubernetes.io/tls-acme: 'true'
-  hosts:
-    - host: "chart-example.local"
-      paths:
-      - path: /	
-        backend:	
-          servicePort: 8080 
+  annotations: {}
+      # cert-manager.io/cluster-issuer: letsencrypt-prod
+      # kubernetes.io/ingress.class: nginx-office
+      # kubernetes.io/tls-acme: 'true'
+  hosts: []
+    # - host: "chart-example.local"
+    #   paths:
+    #   - path: /	
+    #     backend:	
+    #       servicePort: 8080 
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -65,18 +65,18 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-ports:
-  - name: test-port
-    port: 8080
-    protocol: TCP
-livenessProbe:
-    delay: 30
-    path: /healthz
-    port: test-port
-readinessProbe:
-  delay: 30
-  path: /healthz
-  port: test-port
+ports: []
+  # - name: test-port
+  #   port: 8080
+  #   protocol: TCP
+livenessProbe: {}
+    # delay: 30
+    # path: /healthz
+    # port: test-port
+readinessProbe: {}
+  # delay: 30
+  # path: /healthz
+  # port: test-port
 
 nodeSelector: {}
 
@@ -116,6 +116,6 @@ cronJob: {}
 #  containers :
 #    - args : ["args1","args2"]
 
-config:
-  ENV_VARIABLE: "env-variable"
+config: {}
+  # ENV_VARIABLE: "env-variable"
 

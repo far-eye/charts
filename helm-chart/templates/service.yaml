@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: maps-port
+      targetPort: {{ .Values.service.targetPort }}
       protocol: TCP
-      name: maps-port
+      name: {{ .Values.service.targetPort }}
   selector:
     {{- include "selectorLabels" . | nindent 4 }}

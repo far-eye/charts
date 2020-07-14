@@ -34,6 +34,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 8080
+  targetPort: test
 
 ingress:
   enabled: false
@@ -65,17 +66,17 @@ resources: {}
   #   memory: 128Mi
 
 ports:
-  - name: maps-port
+  - name: test-port
     port: 8080
     protocol: TCP
 livenessProbe:
     delay: 30
     path: /healthz
-    port: maps-port
+    port: test-port
 readinessProbe:
   delay: 30
   path: /healthz
-  port: maps-port
+  port: test-port
 
 nodeSelector: {}
 

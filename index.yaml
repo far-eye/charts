@@ -10,4 +10,13 @@ entries:
       urls:
         - https://github.com/far-eye/charts/releases/download/v-1.0.0/fareye-microservices-chart-1.0.0.tgz
       version: 1.0.0
+    - apiVersion: v2
+      created: "2020-07-14T17:13:40.869418058+05:30"
+      description: FarEye generic helm chart
+      digest: 408d785979567f233dd68ca78952330d76bdc7dcfc025144db58c0e300ef69e5
+      name: helm-chart
+      type: application
+      urls:
+        - https://github.com/far-eye/charts/releases/download/v1.1.0/fareye-microservices-chart-1.1.0.tgz
+      version: 1.0.0
 generated: "2020-07-08T17:13:40.868925797+05:30"

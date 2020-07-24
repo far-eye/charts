@@ -103,20 +103,22 @@ hpa: {}
 #  maxReplicas: 10
 #  targetCpu: 50
 
-jobs: []
-#  - name: job
-#    restartPolicy: Never
-#    containers :
-#     - command : ["command1","command2"]
-#       image: test #if not defined then it will pick value from image
+jobs:
+  - name: job
+    restartPolicy: Never
+    containers :
+     - command : ["command1","command2"]
+       args : ["args1"]
+       image: test #if not defined then it will pick value from image
 
-cronJobs: []
-#  - name: cron
-#    restartPolicy: Never
-#    schedule: "*/1 * * * *"
-#    containers :
-#        - args : ["args1","args2"]
-#          image: cron #if not defined then it will pick value from image
+cronJobs:
+  - name: cron
+    restartPolicy: Never
+    schedule: "* * * * *"
+    containers :
+        - args : []
+          command : ["command1","command2"]
+          image: cron #if not defined then it will pick value from image
 
 config: {}
   # ENV_VARIABLE: "env-variable"

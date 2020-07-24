@@ -12,7 +12,14 @@ spec:
         {{- range .containers }}
         - name: "{{ $.Chart.Name }}-job"
           {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
-          command: {{ .command}}
+          {{ if .command }}command:
+           {{- range .command }}
+                - {{ .  }}
+           {{- end }}{{end }}
+          {{ if .args }}args:
+           {{- range .args }}
+                - {{ .  }}
+           {{- end }}{{end }}
         {{- end }}
       restartPolicy: {{ .restartPolicy }}
 {{- end -}}

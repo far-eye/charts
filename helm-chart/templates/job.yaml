@@ -1,3 +1,4 @@
+{{- $fullName := include "fullname" . -}}
 {{- range .Values.jobs}}
 apiVersion: batch/v1
 kind: Job
@@ -11,6 +12,9 @@ spec:
       containers:
         {{- range .containers }}
         - name: "{{ $.Chart.Name }}-job"
+          envFrom:
+          - configMapRef:
+              name: "{{ $fullName }}-env"
           {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
           {{ if .command }}command:
            {{- range .command }}

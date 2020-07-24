@@ -31,10 +31,10 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service: {}
-  # type: ClusterIP
-  # port: 8080
-  # targetPort: test
+service:
+   type: ClusterIP
+   port: 8080
+   targetPort: test
 
 ingress:
   enabled: false
@@ -103,18 +103,21 @@ hpa: {}
 #  maxReplicas: 10
 #  targetCpu: 50
 
-job: {}
-#  restartPolicy: Never
-#  containers :
-#    - command :
-#        - command1
-#        - command2
+jobs:
+  - name: job
+    restartPolicy: Never
+    containers :
+     - command :
+        - command1
+        - command2
 
-cronJob: {}
-#  restartPolicy: Never
-#  schedule: "*/1 * * * *"
-#  containers :
-#    - args : ["args1","args2"]
+cronJobs:
+  - name: cron
+    restartPolicy: Never
+    schedule: "*/1 * * * *"
+    containers :
+        - args : ["args1","args2"]
+          image: postgres #if not defined then it will pick value from image
 
 config: {}
   # ENV_VARIABLE: "env-variable"

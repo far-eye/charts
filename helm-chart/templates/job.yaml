@@ -1,18 +1,18 @@
-{{- if .Values.job -}}
+{{- range .Values.jobs}}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "fullname" . }}
+  name: {{ .name  }}
 spec:
   backoffLimit: 5
   activeDeadlineSeconds: 100
   template:
     spec:
       containers:
-        {{- range .Values.job.containers }}
+        {{- range .containers }}
         - name: "{{ $.Chart.Name }}-job"
-          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
           command: {{ .command}}
         {{- end }}
-      restartPolicy: {{ .Values.job.restartPolicy }}
+      restartPolicy: {{ .restartPolicy }}
 {{- end -}}

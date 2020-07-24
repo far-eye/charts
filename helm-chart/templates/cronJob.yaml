@@ -1,23 +1,22 @@
-{{- if .Values.job -}}
+{{- range .Values.cronJobs}}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ include "fullname" . }}
+  name: {{.name}}
 spec:
-  schedule: "{{ .Values.cronJob.schedule }}"
+  schedule: "{{ .schedule }}"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-            {{- range .Values.cronJob.containers }}
+            {{- range .containers }}
             - name: "{{ $.Chart.Name }}-cron"
-              image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+              {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
               args:
                 {{- range .args }}
                   - {{ .  }}
                 {{- end }}
             {{- end }}
-          restartPolicy: {{ .Values.job.restartPolicy }}
-
+          restartPolicy: {{ .restartPolicy }}
 {{- end -}}

@@ -11,7 +11,7 @@ spec:
       containers:
         {{- range .containers }}
         - name: "{{ $.Chart.Name }}-job"
-          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
           command: {{ .command}}
         {{- end }}
       restartPolicy: {{ .restartPolicy }}

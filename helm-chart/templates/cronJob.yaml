@@ -12,11 +12,7 @@ spec:
           containers:
             {{- range .containers }}
             - name: "{{ $.Chart.Name }}-cron"
-              {{- if .image -}}
-              image: "networking.k8s.io/v1beta1"
-              {{- else -}}
-              image: {{ .image }}
-              {{- end }}
+              {{ if .image }}image: {{ .image }} {{ else }}image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"{{ end }}
               args:
                 {{- range .args }}
                   - {{ .  }}

@@ -107,9 +107,8 @@ jobs:
   - name: job
     restartPolicy: Never
     containers :
-     - command :
-        - command1
-        - command2
+     - command : ["command1","command2"]
+       image: test #if not defined then it will pick value from image
 
 cronJobs:
   - name: cron
@@ -117,7 +116,7 @@ cronJobs:
     schedule: "*/1 * * * *"
     containers :
         - args : ["args1","args2"]
-          image: postgres #if not defined then it will pick value from image
+          image: cron #if not defined then it will pick value from image
 
 config: {}
   # ENV_VARIABLE: "env-variable"

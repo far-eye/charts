@@ -26,4 +26,5 @@ spec:
            {{- end }}{{end }}
         {{- end }}
       restartPolicy: {{ .restartPolicy }}
+---
 {{- end -}}
